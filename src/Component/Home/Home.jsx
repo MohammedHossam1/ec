@@ -1,10 +1,21 @@
-import React, { useContext } from 'react'
-import { CounterContext } from '../../Context/context'
-import FeaturedProducts from '../FeaturedProducts/FeaturedProducts'
+import React from "react";
+import FeaturedProducts from "../FeaturedProducts/FeaturedProducts";
+import CategoreySliders from "../CategorySliders/CategoreySliders";
+import MainSlider from "../MainSlider/MainSlider";
+import {Helmet} from "react-helmet";
+
 export default function Home() {
-  let {changeCounter}=useContext(CounterContext)
-  return <>
-  <FeaturedProducts/>
-  {/* <button onClick={()=>changeCounter()} className='btn btn-danger'>counter in home</button> */}
-  </>
+  return (
+    <>
+      <div className="container">
+      <Helmet>
+                <meta charSet="utf-8" />
+                <title>Fresh Home</title>
+            </Helmet>
+        <MainSlider />
+        <CategoreySliders />
+        <FeaturedProducts />
+      </div>
+    </>
+  );
 }

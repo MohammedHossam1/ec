@@ -28,11 +28,12 @@ export default function Login() {
       .post("https://ecommerce.routemisr.com/api/v1/auth/signin", values)
       .catch((err) => {
         setIsLoading(false);
+
         setErr(err.response.data.message);
       });
-    if (data.message == "success") {
-      console.log("suc");
-      navigate("/home");
+      if (data.message == "success") {
+        // console.log(data);
+      navigate("/");
       //set user token in local storage
       localStorage.setItem("userToken", data.token);
       //set user token in context
@@ -111,8 +112,8 @@ export default function Login() {
                 >
                   Login
                 </button>
-                <Link to="/register" className="btn  mx-1">
-                  Register Now{" "}
+                <Link to="/forgetpassword" className="btn  mx-1">
+                 forget password ?{" "}
                 </Link>
               </div>
             )}
