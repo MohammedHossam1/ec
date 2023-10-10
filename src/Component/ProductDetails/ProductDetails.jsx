@@ -36,7 +36,7 @@ async function addCart(id,headers){
   }
   let { data } = useQuery("productDetails", () => getProductDetails(id));
   return (
-    <div className="container py-2 my-5">
+    <div className="container py-2 productDetail">
       <div className="row align-items-center py-2">
         <Helmet>
           <meta charSet="utf-8" />

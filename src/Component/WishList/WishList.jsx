@@ -68,7 +68,7 @@ useEffect(() => {
   return (
     <>
 
-  <div className="container shadow">
+  <div className="container my-5 shadow">
   {isLoading==true?<div className='d-flex justify-content-center align-items-center my-5'>
    <h2>Loading</h2>
     <div className='loader my-5 mx-2 '>

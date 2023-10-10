@@ -18,6 +18,7 @@
 body{
     font-family: var(--font-family) !important;
     background-color: rgb(236, 235, 235) !important;
+    
 }
 .rating-color
 {
@@ -77,13 +78,7 @@ a , a:hover{
     background-color: var(--light-color) !important;
 }
 
-.foter{
-    position: relative !important;
-    right:0;
-    left:0;
-    bottom:0;
 
-}
 
 /* loader */
 .loader {
@@ -176,14 +171,29 @@ a , a:hover{
   }
 
 
+.productDetail{
+    margin:48px 0px !important ;
+}
 
 
 
 
 
+@media screen and (max-width: 600px) {
+    .categoryInPhone{
+        slidesToShow: 2;
+    dots:true;
+    margin-bottom: 20px !important;
 
-
-
+    }
+    .container{
+        margin:0px 0px !important ;
+    }
+    .socialIc{
+  display: none !important;
+    }
+    
+}
 
 
 

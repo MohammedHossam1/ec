@@ -107,11 +107,13 @@ export default function NavBar() {
           )}
 
           <ul className="navbar-nav  ms-auto mb-2 mb-lg-0">
+            <div className="socialIc">
             <Link className="nav-link" to="">
               <i className="fab fa-facebook-f"></i>
             </Link>
             <Link className="nav-link" to="">
               <i className="fab fa-twitter"></i>
+              
             </Link>
             <Link className="nav-link" to="">
               <i className="fab fa-instagram"></i>
@@ -125,6 +127,7 @@ export default function NavBar() {
             <Link className="nav-link" to="">
               <i className="fab fa-"></i>
             </Link>
+            </div>
             {userToken == null ? (
               <>
                 <Link className="nav-link" to="/login">
