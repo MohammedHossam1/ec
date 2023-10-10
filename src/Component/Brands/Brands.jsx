@@ -6,21 +6,26 @@ export default function Brands() {
   async function getBrands() {
     let { data } = await axios.get(
       `https://ecommerce.routemisr.com/api/v1/brands`
-    );
-    setBrands(data);
-    // console.log(
-
-    // ));
-  }
-  useEffect(()=>{
-    getBrands()
+      );
+      setBrands(data);
+      
+      // ));
+    }
+    useEffect(()=>{
+      getBrands()
+      // console.log(brands)
   },[])
   return <div className="container my-5">
-    <div className="row">
-      {brands!=null?brands?.data.map((brand)=><div className='col-md-3 border'>
+    <div className="row g-4">
+      {brands!=null?brands?.data.map((brand)=><div key={brand.id} className='col-md-3'>
+        <div className="shadow">
       <img src={brand.image} className="w-100" alt="" />
-     </div>):<div className="loader">
-       </div>
+     </div>
+     </div>
+     ):<div className="d-flex align-items-center my-5 justify-content-center">
+      <h3>Loading</h3>
+     <div className="loader mx-2"></div></div>
+
      }
     {
     }

@@ -1,10 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CartConext } from "../../Context/CartContext";
 import { Link } from "react-router-dom";
+import { userContext } from "../../Context/UserContext";
 
 export default function Cart() {
   let [cartDetails, setCartDetails] = useState(null);
   let { getCart,DeleteCartItem,updateCartItem} = useContext(CartConext);
+  let { userToken} = useContext(userContext);
+  let headers={token:userToken}
+// console.log(headers);
+
   async function DeleteItem(id) {
     let { data } = await DeleteCartItem(id);
   //  console.log(data);
@@ -14,18 +19,18 @@ export default function Cart() {
     let { data } = await updateCartItem(id,count);
     setCartDetails(data);
   }
-  async function getCarts() {
-    let { data } = await getCart();
+  async function getCarts(headers) {
+    let { data } = await getCart(headers);
     setCartDetails(data);
   }
   useEffect(() => {
-    getCarts();
+    getCarts(headers);
   }, []);
 
   return (
     <>
       {cartDetails ? (
-        <div className=" container bg-main-light p-3 my-3">
+        <div className=" container shadow bg-main-light p-3 my-5">
         <div className="d-flex justify-content-between align-items-center border-bottom py-2"> 
         
           <h3>Shopping Cart</h3>

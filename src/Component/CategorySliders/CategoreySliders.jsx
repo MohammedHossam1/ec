@@ -15,7 +15,7 @@ export default function CategoreySliders() {
     return axios.get("https://ecommerce.routemisr.com/api/v1/categories");
   }
   let { data, isLoading, isError } = useQuery("CatSlider", getCat);
-  console.log(isLoading);
+  // console.log(isLoading);
   return (
     <>
   

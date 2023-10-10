@@ -6,20 +6,20 @@ import { Helmet } from "react-helmet";
 import Slider from "react-slick";
 import { CartConext } from "../../Context/CartContext";
 import toast from "react-hot-toast";
+import { userContext } from "../../Context/UserContext";
 // import { useSelector } from "react-redux";
 
 export default function ProductDetail() {
-  // let { counter } = useSelector((state) => state.counter);
+let {userToken}=useContext(userContext)
+let headers={token:userToken}
 let {addToCart}=useContext(CartConext)
-async function addCart(id){
-  // addToCart(id)
-  let response = await addToCart(id)
-  if(response.data.status=='success'){
-    toast.success('Product successfully added',{
-      duration:3000,
-    })
-  }else{
-    toast.error('Product didint added')
+async function addCart(id,headers){
+  try{
+  let response = await addToCart(id,headers)
+    toast.success('Product successfully added')
+  }
+  catch(errr){
+    toast.error(errr?.response.data.message);
   }
 }
   var settings = {
@@ -36,13 +36,13 @@ async function addCart(id){
   }
   let { data } = useQuery("productDetails", () => getProductDetails(id));
   return (
-    <div className="container py-2">
+    <div className="container py-2 my-5">
       <div className="row align-items-center py-2">
         <Helmet>
           <meta charSet="utf-8" />
           <title>{data?.data.data.title}</title>
         </Helmet>
-        <div className="col-md-4">
+        <div className="col-md-4 p-3">
       
             <Slider {...settings}>
               {data?.data.data.images.map((img) => 
@@ -53,7 +53,7 @@ async function addCart(id){
           
         </div>
         <div className="col-md-8">
-          <div className="">
+          <div className=" p-3">
             <h2 className="h5">{data?.data.data.title}</h2>
             <p className="">{data?.data.data.description}</p>
             <h6 className="text-main">{data?.data.data.category?.name}</h6>
@@ -66,7 +66,7 @@ async function addCart(id){
               </span>
             </div>
           </div>
-          <button onClick={()=>addCart(data?.data.data.id)} className="btn bg-main w-100 text-white btn-sm mt-3">
+          <button onClick={()=>addCart(data?.data.data.id,headers)} className="btn bg-main w-100 text-white btn-sm mt-3">
             {" "}
             add to cart
           </button>

@@ -17,7 +17,8 @@ let validateSchema = yup.object({
     .matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, "Enater valid password"),
 });
 export default function Login() {
-  let { setUserToken } = useContext(userContext);
+  let { userToken,setUserToken } = useContext(userContext);
+  let { useToken,setUseToken } = useState(null);
   let [isLoading, setIsLoading] = useState(false);
   let [err, setErr] = useState(false);
 
@@ -32,13 +33,14 @@ export default function Login() {
         setErr(err.response.data.message);
       });
       if (data.message == "success") {
-        // console.log(data);
       navigate("/");
-      //set user token in local storage
       localStorage.setItem("userToken", data.token);
-      //set user token in context
       setUserToken(data.token);
+      setUseToken(data.token);
+      console.log(data.token);
+      console.log('dsds');
       setIsLoading(false);
+      console.log(useToken);
     }
   }
   let formik = useFormik({

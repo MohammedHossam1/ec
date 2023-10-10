@@ -30,11 +30,11 @@ let navigate=useNavigate()
     )
     setMainData(data)
     navigate('/verifypassword') 
-console.log(data);
+// console.log(data);
   }
   catch(error){
     setErr(error.response.data.message);
-    console.log(error);
+    // console.log(error);
 
     }
   

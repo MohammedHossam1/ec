@@ -6,7 +6,8 @@ export default function Address() {
   let {cartId,payOnline}=useContext(CartConext)
   async function subFun(values) {
     let x=await payOnline(cartId,values)
-    console.log(x.data.session.url);
+    // console.log(x.data.session.url);
+    
     window.location.href=x.data.session.url
   }
   let formik = useFormik({

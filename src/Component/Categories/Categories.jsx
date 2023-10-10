@@ -6,10 +6,8 @@ import { CategoryContext } from "../../Context/CategoryContext";
 
 export default function Categories() {
   let { catProduct } = useContext(CategoryContext);
-
-  // categoryNavigate()
-
-  console.log(catProduct);
+console.log(catProduct);
+ 
 
   return (
     <div>

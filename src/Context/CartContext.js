@@ -1,16 +1,16 @@
 import axios from 'axios'
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 //this context cart to make a function shred on the all components 
 //it sending 1-api place to save in  2-productId the db want it (body) 3-the token to prove that the user loged in db want it(headers)
 export let CartConext = createContext()
 
 export default function CartContextProvider(proops) {
     let [cartId,setCartId]=useState(null)
-
-    
+ 
+let headers={token:localStorage.getItem('userToken')}
+  
     //1-token
-    let headers = { token: localStorage.getItem('userToken') }
-    function addToCart(productId) {
+    function addToCart(productId,headers) {
         //2-api
         return axios.post(`https://ecommerce.routemisr.com/api/v1/cart`, {
             //body   
@@ -22,7 +22,7 @@ export default function CartContextProvider(proops) {
             headers
         })
     }
-    function addToWish(productId) {
+    function addToWish(productId,headers) {
         //2-api
         return axios.post(`https://ecommerce.routemisr.com/api/v1/wishlist`, {
             //body   
@@ -35,7 +35,7 @@ export default function CartContextProvider(proops) {
             headers
         })
     }
-        function getCart(){
+        function getCart(headers){
             return axios.get(`https://ecommerce.routemisr.com/api/v1/cart`,{
                 headers
             }).then((response)=>response)
@@ -75,7 +75,7 @@ export default function CartContextProvider(proops) {
         useEffect(()=>{
             getCartId()
         },[])
-        return <CartConext.Provider value={{cartId, addToCart,getCart,DeleteCartItem,updateCartItem,payOnline,addToWish}}>
+        return <CartConext.Provider value={{cartId,addToCart,getCart,DeleteCartItem,updateCartItem,payOnline,addToWish}}>
         {proops.children}
     </CartConext.Provider>
 
