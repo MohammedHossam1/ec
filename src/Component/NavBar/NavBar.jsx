@@ -88,7 +88,7 @@ export default function NavBar() {
                 <ul className="dropdown-menu">
                   {data?.data.data.map((cat) => (
                     <li>
-                      {" "}
+                    
                       <Link
                         to="/categories"
                         key={cat?._id}
@@ -107,7 +107,7 @@ export default function NavBar() {
           )}
 
           <ul className="navbar-nav  ms-auto mb-2 mb-lg-0">
-            <div className="socialIc">
+            <div className="socialIc  d-flex">
             <Link className="nav-link" to="">
               <i className="fab fa-facebook-f"></i>
             </Link>
@@ -130,12 +130,12 @@ export default function NavBar() {
             </div>
             {userToken == null ? (
               <>
-                <Link className="nav-link" to="/login">
+                <NavLink className="nav-link" to="/login">
                   Login
-                </Link>
-                <Link className="nav-link" to="/register">
+                </NavLink>
+                <NavLink className="nav-link" to="/register">
                   Register
-                </Link>
+                </NavLink>
               </>
             ) : (
               <span

@@ -3,13 +3,12 @@ import React, { createContext, useState } from 'react'
 export let CategoryContext = createContext()
 
 export default function CategoryContextProvider(proops) {
-   let [catProduct,setcCatProduct]=useState()
+   let [catProduct,setcCatProduct]=useState(null)
    
     async function categoryNavigate(id){
         try{
         let {data}=await axios.get(`https://route-ecommerce.onrender.com/api/v1/products/?category=${id}`)
         setcCatProduct(data)
-        // console.log(data);
         }catch(err){
 
         }    
